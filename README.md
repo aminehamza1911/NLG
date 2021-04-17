@@ -3,8 +3,6 @@
 ## Pour cloner:
 `git clone https://github.com/aminehamza1911/NLG.git`
 
-Après:
-
 ## Pour lancer le FE
 `cd NLG/nlg_fe`
 
