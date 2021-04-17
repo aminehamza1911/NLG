@@ -1,0 +1,12 @@
+version: '3'
+services:
+  nlg_fe:
+    build: ./nlg_fe
+    ports:
+      - '80:80'
+    depends_on:
+      - api_nlg
+  api_nlg:
+    build: ./api_nlg
+    ports:
+      - '3001:3001'

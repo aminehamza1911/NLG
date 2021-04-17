@@ -1,0 +1,57 @@
+{
+  "name": "wink-tokenizer",
+  "version": "5.2.3",
+  "description": "Multilingual tokenizer that automatically tags each token with its type",
+  "keywords": [
+    "Tokenizer",
+    "Tokenize",
+    "Tags",
+    "Tagging",
+    "NLP",
+    "email",
+    "twitter",
+    "URL",
+    "Emoji",
+    "Emoticon",
+    "Multilingual",
+    "French",
+    "German",
+    "Spanish",
+    "Icelandic",
+    "wink"
+  ],
+  "main": "src/wink-tokenizer.js",
+  "scripts": {
+    "pretest": "npm run lint && npm run docs",
+    "test": "istanbul cover _mocha ./test/",
+    "coveralls": "istanbul cover _mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
+    "sourcedocs": "docker -i src -o ./sourcedocs --sidebar no",
+    "lint": "eslint ./src/*.js ./test/*.js ./runkit/*.js",
+    "docs": "jsdoc src/*.js -c .jsdoc.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/winkjs/wink-tokenizer.git"
+  },
+  "author": "Sanjaya Kumar Saxena",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/winkjs/wink-tokenizer/issues"
+  },
+  "homepage": "http://winkjs.org/",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "coveralls": "^3.1.0",
+    "docdash": "github:winkjs/docdash",
+    "docker": "^1.0.0",
+    "eslint": "^7.4.0",
+    "istanbul": "^0.4.5",
+    "jsdoc": "^3.6.4",
+    "mocha": "^8.0.1",
+    "mocha-lcov-reporter": "^1.3.0"
+  },
+  "runkitExampleFilename": "./runkit/example.js",
+  "dependencies": {
+    "emoji-regex": "^9.0.0"
+  }
+}

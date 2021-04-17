@@ -1,0 +1,190 @@
+
+mixin title
+  | #[+syn('Compte-rendu', 'Rapport')] et programme du
+  protect
+  | #{infos.Titre_event}
+
+
+mixin intro
+  | Pour sa #[+syn('seconde ', 'deuxième')] édition
+  | le #[+value(infos.Titre_event)], 
+  | organisé #[+value(infos.Nom_organisation)],
+  | portait sur #[+value(infos.Theme_global)]. 
+  | #[+value(infos.Lieu)] à 
+  | #[+value(infos.Ville)], a accueilli l’événement.
+
+mixin lastday
+  | à partir du #[+value(jours[2],{'NOT_IL_ELLE':true})] (#[+syn('dernier', '3e')] jour): 
+  | Depuis le début de l’événement,#[+value(Nombre_visiteurs)]personnes ont participé,
+  | avec une affluence maximale le #[+value(Jour_maximum.jour_max)] avec
+  | #[+value(Jour_maximum.attendance_max)] visiteurs, soit #[+value(ratio)] % du nombre total de visiteurs.
+
+mixin seconday
+  | À partir du #[+value(jours[1],{'NOT_IL_ELLE':true})] (#[+syn('deuxième', '2e')] jour):
+  | La journée d'hier a accueillie #[+value(attendance)] personnes.
+  | La participation aux #[+value(nbr_event)] événements sur #[+value(nbr_salle)] salles a été très appréciée. 
+  | En particulier, l’intervention de #[+value(att_max_per_day.Nom_intervenant)],
+  | #[+value(att_max_per_day.titre)] sur le thème de #[+value(att_max_per_day.theme)] a attiré le plus d’attention, avec #[+value(att_max_per_day.attendance)] visiteurs.
+
+
+mixin tempsfort
+  | Les temps forts du #[+value(jour)] #[+value(events[jour][0].Jour_date)] 
+
+
+mixin journee
+  | La journée du #[+value(jour)] #[+value(events[jour][0].Jour_date)] donnera lieu à des événements dans
+  | #[+value(events_morning[i][0].nb_lieux)] lieux.
+  | Au total, #[+value(events_morning[i][0].nb_intervention)] interventions sont prévues afin de couvrir les différentes thématiques proposées. 
+
+mixin details1
+  | #[+value(events_morning[i][0].lieu)],
+  | #[+value(events_morning[i][0].Nom_intervenant)], #[+value(events_morning[i][0].Titre_intervenant)], démarre la première #[+value(events_morning[i][0].intervention)]
+  | sur le thème de #[+value(events_morning[i][0].Theme_event)] avec un regard sur «#[+value(events_morning[i][0].Theme_intervenant)]».
+
+
+
+mixin detailsl
+  synz {mode:'sequence'}
+    syn
+      | En parallèle, toujours dans la matinée,#[+value(lieu)] se tiendra une #[+value(event.intervention)] avec la participation de #[+value(event.Nom_intervenant)], #[+value(event.Titre_intervenant)] sur le sujet de «#[+value(event.Theme_intervenant)]».
+    syn
+      | On pourra suivre également dans la #[+value(lieu)] une #[+value(event.intervention)] avec #[+value(event.Nom_intervenant)], #[+value(event.Titre_intervenant)] sur le sujet «#[+value(event.Theme_intervenant)]».
+    syn
+      | Une #[+value(event.intervention)] organisée avec #[+value(event.Nom_intervenant)], #[+value(event.Titre_intervenant)], sur le thème «#[+value(event.Theme_intervenant)]» à #[+value(lieu)] 
+    syn 
+      | Une #[+value(event.intervention)] aura également lieu dans #[+value(lieu)], #[+value(event.Nom_intervenant)], #[+value(event.Titre_intervenant)] qui présente «#[+value(event.Theme_intervenant)]».
+
+mixin details2
+  synz {mode:'sequence'}
+    syn
+      | Suite à cette keynote anticipatrice de #[+value(events_morning[i][0].duree)], #[+value(events_morning[i][1].Nom_intervenant)],#[+value(events_morning[i][1].Titre_intervenant)] #[+syn("interviendra avec la thématique","Ce dernier nous informe sur")] «#[+value(events_morning[i][1].Theme_intervenant)]».
+    syn 
+      | Puis c’est au tour de #[+value(events_morning[i][1].Nom_intervenant)],#[+value(events_morning[i][1].Titre_intervenant)] qui #[+syn("interviendra avec la thématique","nous informera sur")] «#[+value(events_morning[i][1].Theme_intervenant)]».
+    syn 
+      | Après, #[+value(events_morning[i][1].Nom_intervenant)],#[+value(events_morning[i][1].Titre_intervenant)] #[+syn("interviendra avec la thématique","nous informera sur")] «#[+value(events_morning[i][1].Theme_intervenant)]».
+  
+
+mixin details4
+  synz {mode:'sequence'}
+    syn
+      | S'ensuit un retour d’expérience de #[+value(events_evening[l][0].duree)], de #[+value(events_evening[l][1].Nom_intervenant)], #[+value(events_evening[l][1].Titre_intervenant)], qui #[+syn('interviendra avec la thématique', 'abordera le thème')] de «#[+value(events_evening[l][1].Theme_intervenant)]».
+    syn
+      | C'est ensuite #[+value(events_evening[l][1].Nom_intervenant)], #[+value(events_evening[l][1].Titre_intervenant)] qui témoigne sur «#[+value(events_evening[l][1].Theme_intervenant)]».
+
+
+mixin details3
+  synz {mode:'sequence'}
+    syn
+      | L’après-midi débute avec la #[+value(event.intervention)] de #[+value(events_evening[l][0].Nom_intervenant)], #[+value(events_evening[l][0].Titre_intervenant)],sur le thème «#[+value(events_evening[l][0].Theme_intervenant)]».
+    syn
+      | Après la pause #[+syn("déjeuner","de midi")], #[+value(events_evening[l][0].intervention)], «#[+value(events_evening[l][0].Theme_intervenant)]» débute avec #[+value(events_evening[l][0].Nom_intervenant)], #[+value(events_evening[l][0].Titre_intervenant)].
+
+mixin infos_intervention
+  | --#[+value(event.Nom_intervenant)],
+  | #[+value(event.Titre_intervenant)] sur le sujet  « #[+value(event.Theme_intervenant)]»,
+
+
+mixin conclusion_matinee
+  synz {mode:'sequence'}
+    syn 
+      | La matinée se clôture par la thématique «#[+value(event.Theme_intervenant)]», avec #[+value(event.Nom_intervenant)], #[+value(event.Titre_intervenant)] qui la traitra soigneusement.
+    syn
+      | Avant la pause #[+syn("déjeuner","de midi")], #[+value(event.Titre_intervenant)], fait un point sur le thème de conclusion «#[+value(event.Theme_intervenant)]».
+    syn   
+      | Pour clore cette matinée en beauté, une #[+value(event.intervention)] avec #[+value(event.Nom_intervenant)], #[+value(event.Titre_intervenant)] sur le thème «#[+value(event.Theme_intervenant)]».
+
+mixin conclusion_aprem
+  synz {mode:'sequence'}
+    syn
+      | Enfin une keynote sur «#[+value(event.Theme_intervenant)]», présentée par #[+value(event.Nom_intervenant)],#[+value(event.Titre_intervenant)] vient clôturer cette journée riche en information.
+    syn 
+      | Ce jour intense se termine par une #[+value(event.intervention)], de #[+value(event.Nom_intervenant)],#[+value(event.Titre_intervenant)].
+    syn 
+      | Finalement une #[+value(event.intervention)], organisée avec  #[+value(event.Nom_intervenant)], #[+value(event.Titre_intervenant)], qui démontre #[+value(event.Theme_intervenant)].
+
+
+mixin morning_event 
+ synz {mode:'sequence'}
+    syn
+      | Suivront les interventions de:
+    syn 
+      | Après, nous allons nous retrouver avec les interventions de:
+    syn 
+      | La poursuite des interventions avec:
+
+mixin aprm_event 
+ synz {mode:'sequence'}
+    syn
+      | L'après-midi se poursuivra toujours avec les interventions de:
+    syn 
+      | Nous aurons également l'occasion de suivre les interventions de:
+    syn 
+      | Puis les interventions de:
+
+
+h1 #[+title]
+br
+p #[+intro]
+br
+p #[+lastday]
+br
+p #[+seconday]
+br
+- let jour;
+- let i = 0; 
+- let l = 0;
+- let event;
+- let km = 0 ;
+- let ke = 0 ;
+- let last = 0;
+- let exist = true ;
+- let first = false ;
+- let ancien_lieu = events_morning[i][0].lieu ;
+ each j in jours
+  - jour = j;
+  hr
+  h3 #[+tempsfort]
+  p #[+journee]
+  p #[+details1]
+  each li in lieux
+    - lieu = li;
+    each e in events_morning[i]
+      if e.lieu === lieu
+        if ancien_lieu != lieu && exist
+          - event = e;
+          p #[+detailsl];
+          - exist = false;
+          - first = true;
+        if events_morning[i].length === km+1 
+          - event = e;
+          p #[+conclusion_matinee]
+        else 
+          if km > 1 && !first
+            - event = e;
+            p #[+infos_intervention]
+          if km === 1
+            - event = e;
+            p #[+details2]
+            b #[+morning_event]:
+            br
+      - km++;
+      - first = false;
+    - ancien_lieu = lieu;
+    - exist = true;
+    - km = 0;
+
+  - i++;
+  p #[+details3]
+  p #[+details4]
+  b #[+aprm_event] 
+  br
+  each ev in events_evening[l]
+    if events_evening[l].length === ke+1 
+      - event = ev;
+      p #[+conclusion_aprem]
+    else if ke > 1
+      - event = ev;
+      p #[+infos_intervention]
+    - ke++;
+  - ke = 0;
+  - l++;
